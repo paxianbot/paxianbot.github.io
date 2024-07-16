@@ -55,6 +55,20 @@
         border: 1px solid #ddd;
         border-radius: 5px;
       }
+      .changelog-preview {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px 0;
+        display: none;
+      }
+      .toggle-button {
+        cursor: pointer;
+        color: #007bff;
+        text-decoration: none;
+      }
+      .toggle-button:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
@@ -67,6 +81,8 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="faq.html">FAQ</a>
       </div>
+      <p class="toggle-button" onclick="togglePreview(event)">Show Preview</p>
+      <img src="paxian.gif" alt="Changelog Preview" class="changelog-preview" id="changelogPreview" />
       <div class="changelog">
         <h2>Changelog</h2>
         <ul>
@@ -92,5 +108,26 @@
         </ul>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var preview = document.getElementById("changelogPreview");
+        var toggleButton = document.querySelector(".toggle-button");
+        preview.style.display = "none";
+        toggleButton.textContent = "Show Preview";
+      });
+
+      function togglePreview(event) {
+        event.preventDefault();
+        var preview = document.getElementById("changelogPreview");
+        var toggleButton = document.querySelector(".toggle-button");
+        if (preview.style.display === "none") {
+          preview.style.display = "block";
+          toggleButton.textContent = "Hide Preview";
+        } else {
+          preview.style.display = "none";
+          toggleButton.textContent = "Show Preview";
+        }
+      }
+    </script>
   </body>
 </html>
